@@ -1,0 +1,577 @@
+:root {
+    --gap: 0.125rem;
+    --triangle-base: 3rem;
+    --triangle-base-height: calc(1.733 * var(--triangle-base));
+    --triangle-width: calc(var(--triangle-base) - var(--gap));
+    --triangle-height: calc(var(--triangle-base-height) - var(--gap));
+  }
+  
+.intro{
+    height:800px;
+    width:100%;
+    position: relative;
+    background:radial-gradient(#2c666e,#161b33);
+    background-size: 400% 400%;
+    background-position: 100% 100%;
+    overflow: hidden;
+    animation: bg-animation 20s alternate infinite;
+    box-sizing: border-box;
+    padding-bottom: calc(var(--gap) * 2);
+    >h1{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        padding:1rem;
+        transform: translate(-50%,-50%);
+        background: #0d0c1d;
+        border-radius: 5rem;
+        box-shadow:0 0 1rem 1rem #0d0c1d ;
+        color: white;
+        text-align: center;
+        font-family: 'spartan';
+    }
+    >a{
+        position: absolute;
+        left: 50%;
+        top: 65%;
+        padding:1rem;
+        transform: translate(-50%,-50%);
+        >button{
+            padding: 1%;
+            height: 50px;
+            width: 220px;
+            color: white;
+            font-size: x-large;
+            text-align: center;
+            font-family: 'mons';
+            border-radius: 50px;
+        }
+    }
+}
+@keyframes bg-animation {
+    from{
+        background-position: 0% 0%;
+    }
+    to {
+        background-position: 400% 400%;
+    }
+    
+}
+.glow{
+    position:absolute;
+    width: 50vw;
+    height: 100vw;
+    background: radial-gradient(circle closest-side,var(--glow-color),transparent);
+    animation: glow-animation 5s ease infinite alternate;
+    transform: translate(-50%,-50%);
+}
+
+@keyframes glow-animation {
+    from{
+        --glow-color:#adf5ff;
+        transform: translate(-50%,-50%)scale(0.5);
+    }
+    to{
+        --glow-color:#ff6978;
+        transform: translate(-50%,-50%)scale(1)rotate(90deg);
+    }
+}
+
+.triangle{
+    display: grid;
+    grid-template-columns: repeat(var(--columns),calc(var(--triangle-base) * 2 + var(--gap)));
+    width: 150%;
+    height: 100%;
+}
+
+.triangle-set{
+    display: inline-block;
+    position: relative;
+    width: calc(var(--triangle-base) * 2 + var(--gap)+100);
+    height: var(--triangle-base-height);
+}
+
+.triangle-set--offset{
+    transform: translateX(calc(-1 * var(--triangle-base) - 0.5 * var(--gap)));
+}
+
+.triangle-set::before,.triangle-set::after{
+    content: "";
+    position: absolute;
+    width: 100;
+    height: 0;
+    top: var(--gap);
+    border-right: var(--triangle-width) solid transparent;
+    border-left: var(--triangle-width) solid transparent;
+}
+
+.triangle-set::before{
+    left:calc(-1*var(--triangle-base));
+    border-bottom: var(--triangle-height) solid #010c1d;
+}
+.triangle-set::after{
+    right:calc(var(--gap) * 2.5);
+    border-top: var(--triangle-height) solid #010c1d;
+}
+@font-face {
+    font-family: 'spartan';
+    src: url('./fonts/Spantaran\ \(DEMO\).ttf');
+}
+@font-face{
+    font-family:'League_Spartan';
+    src: url('./fonts/LeagueSpartan-ExtraBold.ttf')format('truetype');
+}
+@font-face {
+    font-family:"alata";
+    src: url("./fonts/Alata-Regular.ttf")format('truetype');
+}
+@font-face {
+    font-family: "mons";
+    src: url("./fonts/Montserrat-VariableFont_wght.ttf")format('truetype');
+}
+.cv{
+    height: 100px;
+    width: 50px;
+    z-index: 99;
+}
+.image{
+    width: 300px;
+    padding:25px;
+    
+}
+.about{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: fit-content;
+    background:linear-gradient(to left, #0051ff,#ff00d4);
+    padding: 2.5rem;
+    box-shadow: 1rem 1rem 1rem rgba(0,0,0,0.3);
+    border-radius: 1.5rem;
+}
+.aboutimg{
+    position: relative;
+    height:17rem;
+    min-width: 17rem;
+    max-width: 17rem;
+    transform: translateX(-8rem);
+}
+.aboutimg img{
+    display: block;
+    height:100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 2rem;
+    box-shadow: 0 0.5rem  0.5rem rgba(0,0,0,0.6);
+}
+.abtp{
+    text-align: center;
+    margin-bottom: 3rem;
+    >h1{
+        font-family: 'League_Spartan';
+        animation: text 7s;
+        color: white;
+    }
+}
+.abtp>p{
+    font-family: 'alata';
+    font-size:large;
+    animation: fadeIn 8s;
+    color: white;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+ } 
+@media (max-width:1068px){
+    .about,.rect{
+        max-width: 80rem;
+    }
+    .aboutimg{
+        max-width: 30rem;
+        min-width: 30rem;
+    }
+}
+@media (max-width:868px){
+    .about,.rect{
+        max-width: 70 rem;
+    }
+}
+@media (max-width:768px){
+    .about,.rect{
+        padding: 2.5rem;
+        flex-direction: column;
+    }
+    .aboutimg{
+        min-width: 100%;
+        transform: translate(0,-8rem);
+    }
+}
+.abt{
+    display:flex;
+    margin: auto;
+    align-items:center;
+    padding: 15%;
+}
+.skills {
+    position: relative;
+    width: 320px;
+    height: 250px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0 auto;
+    perspective: 1000px;
+    > .name{
+        padding: 20px;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        animation: rotate360 60s infinite forwards linear;
+    }
+}
+.skills1 {
+    padding-bottom: 100px;
+    padding-top: 180px;
+    > h1{
+    text-align: center;
+    font-family: "League_Spartan";
+    font-size: 800%;
+    text-shadow: 4px 4px 8px rgba(0,0,0,1);
+    color: white;
+    }
+}
+.imgs{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: 20px;
+    right: 10px;
+    left: 10px;
+    background-size:100%;
+    display: flex;
+}
+
+@keyframes rotate360{
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(-360deg);
+    }
+}
+
+.imgs:nth-child(1){
+    transform: rotateY(0deg) translateZ(430px);
+}
+
+.imgs:nth-child(2){
+    filter:saturate(2.5) contrast(1.5) brightness(1.5);
+    transform: rotateY(36deg) translateZ(430px);
+}
+
+.imgs:nth-child(3){
+    filter:saturate(1.5) contrast(1.5);
+    transform: rotateY(72deg) translateZ(430px);
+}
+
+.imgs:nth-child(4){
+    
+    transform: rotateY(108deg) translateZ(430px);
+}
+
+.imgs:nth-child(5){
+    
+    transform: rotateY(144deg) translateZ(430px);
+}
+
+.imgs:nth-child(6){
+    
+    transform: rotateY(180deg) translateZ(430px);
+}
+.imgs:nth-child(7){
+    
+    transform: rotateY(216deg) translateZ(430px);
+}
+.imgs:nth-child(8){
+    
+    transform: rotateY(252deg) translateZ(430px);
+}
+.imgs:nth-child(9){
+    
+    transform: rotateY(288deg) translateZ(430px);
+}
+.imgs:nth-child(10){
+    
+    transform: rotateY(324deg) translateZ(430px);
+}
+
+.project{
+    max-width: 1440px; 
+    height:500px; 
+    left: 66px; 
+    top: 62px; 
+    position:static; 
+    background: linear-gradient(to top,#00000000,#24243e); 
+    border-radius: 50px;
+    margin-left:7.5%;
+    display:flex;
+    padding-bottom:40%;
+    padding-top: 5%;
+}
+.projtitle >h1{
+    text-align: center; 
+    font-size: 81.26px; 
+    font-family:"Reem"; 
+    color: white;
+    font-weight: 500;
+    word-wrap: break-word;
+    margin-top:10%;
+    padding-top: 15%;
+}
+@font-face {
+    font-family: "Reem";
+    src: url("./fonts/ReemKufiFun-VariableFont_wght.ttf");
+}
+.projects{
+    width: 1168px; 
+    height: 554px; 
+    left: 100px; 
+    top: 100px;
+    display: flex;
+    flex-direction:row;
+    gap: 15px;
+    flex-wrap: wrap;
+    row-gap: 12%;
+    column-gap: 8%;
+}
+
+.card1{
+    background: url("./images/image.png") center no-repeat;
+    background-size:cover;
+}
+.card2{
+    background: url("./images/face-recognition-abstract-software-interface_52683-12750.avif");
+    background-position: center;
+}
+.card3{
+    background: url("./images/apple-notes-hero.jpg");
+    background-position: center;
+}
+.card4{
+    background-image: url("./images/1000_F_530308539_ld05af6dnP2bu6LiBRmuwaEXHn7pNS7l.jpg");
+    background-size:cover;
+}
+.card5{
+    background-image: url("./images/diabetes.png");
+    background-size:cover;
+}
+.card6{
+    background-image: url("./images/65.jpg");
+    background-size:cover;
+}
+.card8{
+    background-image: url("./images/blog.png");
+    background-size:cover;
+}
+.card9{
+    background-image: url("./images/Shutterstock-G4zQqLsPn5.jpg");
+    background-size:contain;
+    background-position: center;
+}
+.card10{
+    background-image: url("./images/jap.png");
+    background-size:cover;
+}
+.pro{
+    width: 350px; 
+    height: 300px;  
+    border-radius: 50px;
+    z-index: 1;
+    display: grid;
+    position:relative;
+    place-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+.logo{
+    width: 80px;
+    height: 80px;
+}
+.pro::before,
+.pro::after {
+    content: '';
+    left: 0;
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:linear-gradient(to bottom,#0f0c29,#302b63,#24243e);
+    transition: transform 0.5s .25s;
+}
+.pro::before{
+    top: 0;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 100%);
+    transform: translateY(-100%);
+}
+.pro::after{
+    bottom: 0;
+    clip-path: polygon(0 55%, 100% 0, 100% 100%, 0 100%);
+    transform: translateY(100%);
+}
+.probody{
+    opacity: 0;
+    transition: opacity 0.25s;
+    >h1,a{
+        color: white;
+    }
+}
+.proname{
+    font-family: 'Lemon';
+    margin-bottom: 15px;
+    font-size:210%;
+    text-align: center;
+    object-fit:cover;
+    letter-spacing: 3px;
+    text-shadow:0 0 2px aqua;
+}
+.proname1{
+    font-family: 'Lemon';
+    font-size:150%;
+    text-align: center;
+    letter-spacing: 3px;
+    color: white;
+}
+.pro:hover::before,
+.pro:hover::after{
+    transform: translateY(0);
+}
+.pro:hover .probody{
+    opacity: 1;
+    transition-delay: 0.75s;
+}
+@font-face {
+    font-family: 'PL';
+    src: url('./fonts/Barclays/Premier/League.ttf');
+}
+@font-face {
+    font-family: Lemon;
+    src: url('./fonts/LemonMilk.otf');
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    width: 75%;
+    margin-left: 12.5%;
+    margin-top: 2.5%;
+    border-radius: 60px;
+    background: linear-gradient(to right,#0f2027,#203a43,#2c5364);
+}
+.navbar-brand{
+    >h2{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        margin-left:80%;
+        font-weight: 1700;
+        font-size: 1.5rem;
+        color: white;
+    }
+}
+.navbar-links{
+    margin-right: 5%;
+}
+.navbar-links ul{
+    display: flex;
+    > li{
+        list-style: none;
+        > a{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin-left: 40px;
+            font-weight: 1700;
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: white;
+            padding: 1rem;
+            display: block;
+        }
+    }
+}
+
+.toggle-button{
+    position: absolute;
+    top: 1rem;
+    right:35px ;
+    display:none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+.bar{
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+@media (max-width: 450px){
+    .navbar-links{
+        display: none;
+    }
+    .navbar{
+        width:300px;
+        align-items: center;
+    }
+    .navbar-brand{
+        width:fit-content;
+        text-align: center;
+    }
+    .project{
+        display: none;
+    }
+    .project1{
+        background-color: #2c5364;
+        margin: 15px;
+        padding: 15px;
+        border-radius: 10%;
+    }
+}
+@media (min-width: 426px) {
+    .project1 {
+      display: none;
+    }
+}
+.Contact{
+    text-align: center; 
+    font-size:50px; 
+    font-family:"alata"; 
+    font-weight: 500;
+    word-wrap: break-word;
+    color: white;
+    margin-top:5%;
+}
+
+
+table {
+    border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+th,
+td {
+	padding: 5px;
+	color: #fff;
+
+}
+
+th {
+	text-align: left;
+}
+tr{
+    margin-bottom: 15px;
+}
